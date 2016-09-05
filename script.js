@@ -3,10 +3,18 @@ var dragndrop = (function() {
   var myY = '';
   var whichArt = '';
 
+  function resetZ(){
+    var elements = document.querySelectorAll('img');
+    for (var i = elements.length - 1; i >= 0; i--){
+      elements[i].style.zIndex = 5;
+    }
+  }
+
   function moveStart(e){
     whichArt = e.target;
     myX = e.offsetX === undefined ? e.layerX : e.offsetX;
     myY = e.offsetX === undefined ? e.layerY : e.offsetY;
+    resetZ();
     whichArt.style.zIndex = 10;
   }
 
